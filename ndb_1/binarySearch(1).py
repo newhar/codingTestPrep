@@ -1,5 +1,5 @@
 # 숫자개수 찾기
-# 19:58 ~ 
+# 19:58 ~ 20:02
 from bisect import bisect_left, bisect_right
 
 n, target = map(int, input().split(' '))
