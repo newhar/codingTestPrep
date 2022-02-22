@@ -1,3 +1,4 @@
+# 토마토
 import sys
 from collections import deque
 
@@ -37,6 +38,3 @@ if(ans == -1) :
   print(ans)
 else :
   print(ans-1)
-
-
-
