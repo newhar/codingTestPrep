@@ -12,8 +12,6 @@ dy = [-1,1,0,0]
 dx = [0,0,-1,1]
 
 def bfs(y, x) :
-  # 그룹에 속한 블록의 개수는 2보다 크거나 같아야 하며, 임의의 한 블록에서 그룹에 속한 인접한 칸으로 이동해서 그룹에 속한 다른 모든 칸으로 이동할 수 있어야 한다. 블록 그룹의 기준 블록은 무지개 블록이 아닌 블록 중에서 행의 번호가 가장 작은 블록, 그러한 블록이 여러개면 열의 번호가 가장 작은 블록이다.
-  # 시작점이 기준블록일 수 밖에 없다. 인접하는 최상단이기 때문.  
   bCnt, rCnt = 1,0
   tempCheckList = []
   rainbowCheckList = []
@@ -74,7 +72,6 @@ def removeBlock(group) :
   return score
   
 def gravity() :
-  # 모든 칸에 대하여-2 일때만 내릴 수 있으면된다. -1 이면 이동하면 안됨.
   for _ in range(n) :
     for y in range(n) :
       for x in range(n) :
@@ -99,13 +96,11 @@ ans = 0
 for _ in range(n) :
   a.append( list(map(int, sys.stdin.readline().split())) )
 
-# 크기가 가장 큰 블록 그룹을 찾는다. 그러한 블록 그룹이 여러 개라면 포함된 무지개 블록의 수가 가장 많은 블록 그룹, 그러한 블록도 여러개라면 기준 블록의 행이 가장 큰 것을, 그 것도 여러개이면 열이 가장 큰 것을 찾는다.
 check = [ [False] * n for _ in range(n) ]
 
 while True :
-  
   check = [ [False] * n for _ in range(n) ]
-  candid = [] # (blockCnt, rainbowCnt, minY, minX )
+  candid = [] 
   
   for y in range(n) :
     for x in range(n) :
@@ -118,14 +113,9 @@ while True :
     break
   
   candid.sort(key = lambda x : (-(x[0]+x[1]), -x[1], -x[2], -x[3]))
-  # 1에서 찾은 블록 그룹의 모든 블록을 제거한다. 블록 그룹에 포함된 블록의 수를 B라고 했을 때, B2점을 획득한다.
   ans += removeBlock(candid[0])
   gravity()
   a = rotate()
   gravity()  
 
 print(ans)
-
-
-
-      
