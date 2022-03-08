@@ -69,7 +69,3 @@ for i in range(r) :
         print("KAKTUS")
       else :
         print(cost[i][j])
-
-
-
-        
